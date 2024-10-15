@@ -1,0 +1,4 @@
+test.py
+.env
+__pycache__/
+prompt/__pycache__/

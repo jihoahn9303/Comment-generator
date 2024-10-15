@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  app: &app
+    user: root
+    hostname: "${HOSTNAME}"
+    image: "${DOCKER_IMAGE_NAME}"
+    container_name: code-generator-fastapi
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    env_file:
+      - envs/gcp.env
+      - envs/huggingface.env
+      - envs/fastapi.env
+    ports:
+      - 8000:8000
+    ipc: host
+    network_mode: host
+    init: true
